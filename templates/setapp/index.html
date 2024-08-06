@@ -15,7 +15,7 @@
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="{% static 'setapp/css/styles.css' %}" />
   <title>KART</title>
-  <link rel="icon" type="image/x-icon" href="logo/Kart.png">
+  <link rel="icon" type="image/x-icon" href="{% static 'logo/Kart.png' %}">
   <link rel="stylesheet" href= "{% static 'https://unicons.iconscout.com/release/v4.0.0/css/line.css' %}">
 </head>
 
@@ -34,7 +34,7 @@
             <div class="nav__hamburger">
               <span>
                 <svg>
-                  <use xlink:href="{'./images/sprite.svg#icon-menu'}"></use>
+                  <use xlink:href="{% static 'setapp/images/sprite.svg' %}#icon-menu}"></use>
                 </svg>
               </span>
             </div>
@@ -45,7 +45,7 @@
               <h1 class="nav__category">NR<span>G</span></h1>
               <div class="close__toggle">
                 <svg>
-                  <use xlink:href="./images/sprite.svg#icon-cross"></use>
+                  <use xlink:href="{% static 'setapp/images/sprite.svg' %}#icon-cross"></use>
                 </svg>
               </div>
             </div>
@@ -55,11 +55,11 @@
               </li>
 
               <li class="nav__item">
-                <a href="#featured" class="nav__link scroll-link">اجناس ویژه</a>
+                <a href="{% url 'products:featured_p' %}#featured" class="nav__link scroll-link">اجناس ویژه</a>
               </li>
 
               <li class="nav__item">
-                <a href="#blog" class="nav__link scroll-link">وبلاگ</a>
+                <a href="{% url 'blogs:blogs' %}" class="nav__link scroll-link">وبلاگ</a>
               </li>
 
               <li class="nav__item">
@@ -83,7 +83,7 @@
                 </svg>
               </a>
 
-              <a href="addToCart.html" class="icon__item">
+              <a href="{% url 'carts:cart' %}" class="icon__item">
                 <svg>
                   <use xlink:href="{% static 'setapp/images/sprite.svg' %}#icon-shopping-basket"></use>
                 </svg>
@@ -556,45 +556,52 @@
         <div class="title">
           <h1 class="primary__title">اجناس ویژه</h1>
         </div>
-
+      {% if items %} 
+        {% for item in items %}
         <div class="featured__center">
           <div class="product">
             <div class="img__container">
-              <img src="{% static 'setapp/images/pic5.png' %}" alt="" />
+              <img src="{{ item.image.url }}" alt="{{ item.name_of_product }}" />
             </div>
             <div class="product__bottom">
               <div class="rating">
                 <span>
                   <svg>
-                    <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                    <use xlink:href="{% static 'setapp/images/sprite.svg' %}#icon-star-full"></use>
                   </svg>
                 </span>
                 <span>
                   <svg>
-                    <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                    <use xlink:href="{% static 'setapp/images/sprite.svg' %}#icon-star-full"></use>
                   </svg>
                 </span>
                 <span>
                   <svg>
-                    <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                    <use xlink:href="{% static 'setapp/images/sprite.svg' %}#icon-star-full"></use>
                   </svg>
                 </span>
                 <span>
                   <svg>
-                    <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                    <use xlink:href="{% static 'setapp/images/sprite.svg' %}#icon-star-full"></use>
                   </svg>
                 </span>
                 <span>
                   <svg>
-                    <use xlink:href="./images/sprite.svg#icon-star-empty"></use>
+                    <use xlink:href="{% static 'setapp/images/sprite.svg' %}#icon-star-empty"></use>
                   </svg>
                 </span>
               </div>
-              <h3>Polar Skate Co Devil T Shirt</h3>
-              <a href="#">Add To Cart</a>
+              <h3>{{ item.name_of_product }}</h3>
+              <h4> {{ item.price }} تومان</h4>
+              <a href="#">اضافه به کارت</a>
             </div>
           </div>
-          <div class="product">
+        {% endfor %}
+      {% else %}
+          <p>جنس ویژه ای وجود ندارد</p>
+      {% endif %}
+          <!--  -->
+          <!-- <div class="product">
             <div class="img__container">
               <img src="{% static 'setapp/images/pic4.png' %}" alt="" />
             </div>
@@ -844,7 +851,7 @@
               </div>
               <h3>Polar Skate Co Devil T Shirt</h3>
               <a href="#">Add To Cart</a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

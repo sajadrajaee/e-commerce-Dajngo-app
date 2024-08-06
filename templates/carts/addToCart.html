@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,16 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kart</title>
-    <link rel="icon" type="image/x-icon" href="logo/Kart.png">
+    <link rel="icon" type="image/x-icon" href="{% static 'logo/Kart.png' %}">
     <!-- <link rel="icon" type="image/x-icon" href="/logo/kartlogoimage.jpg"> -->
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap' %}"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="addToCart.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{% static 'carts/css/addToCart.css' %}">
+    <link rel="stylesheet" href="{% static 'setapp/css/styles.css' %}">
 
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="{% static 'https://unicons.iconscout.com/release/v4.0.0/css/line.css' %}">
 
 </head>
 
@@ -26,7 +27,7 @@
                 <nav class="nav__center">
                     <div class="nav__header">
                         <div class="nav__logo">
-                            <a href="index.html">
+                            <a href="{% static 'setapp/css/index' %}">
                                 <h1>KA<span>RT</span></h1>
                             </a>
                         </div>
@@ -34,7 +35,7 @@
                         <div class="nav__hamburger">
                             <span>
                                 <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-menu"></use>
+                                    <use xlink:href="{% static 'setapp/images/sprite.svg' %}#icon-menu"></use>
                                 </svg>
                             </span>
                         </div>
@@ -67,7 +68,7 @@
                             </li>
 
                             <li class="nav__item">
-                                <a href="login.html" class="nav__link">Login/Register</a>
+                                <a href="{% url 'useraccounts:login' %}" class="nav__link">Login/Register</a>
                             </li>
                         </ul>
 
