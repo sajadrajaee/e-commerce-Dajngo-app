@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'setapp',
+    'mainapp',
     'useraccounts',
     'products',
     'carts',
@@ -60,8 +60,8 @@ ROOT_URLCONF = 'ecommerce_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR, 'templates'],
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
+        'APP_DIRS': True, #means Django will look for templates in each app directory
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

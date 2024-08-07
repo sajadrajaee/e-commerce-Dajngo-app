@@ -10,7 +10,7 @@ class BlogPost(models.Model):
     author = models.CharField(max_length=180)
     created_at = models.TextField()
     image = models.ImageField(
-        upload_to='static/blogs/images', 
+        upload_to='static/blogs/images',
         null=True,
         blank=True
     )

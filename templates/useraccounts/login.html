@@ -11,7 +11,7 @@
     <!-- <link rel="icon" type="image/x-icon" href="/logo/kartlogoimage.jpg"> -->
     <link href="{% static 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap' %}"
         rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'setapp/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'mainapp/css/styles.css' %}">
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <link rel="stylesheet" href="{% static 'useraccounts/css/login.css' %}">
     <link rel="stylesheet" href="{% static 'https://unicons.iconscout.com/release/v4.0.0/css/line.css' %}">
@@ -25,14 +25,14 @@
                 <nav class="nav__center">
                     <div class="nav__header">
                         <div class="nav__logo">
-                            <a href="{% url 'setapp:index' %}">
+                            <a href="{% url 'mainapp:index' %}">
                                 <h1>KA<span>RT</span></h1>
                             </a>
                         </div>
                         <div class="nav__hamburger">
                             <span>
                                 <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-menu"></use>
+                                    <use xlink:href="{% static 'mainapp/images/sprite.svg' %}#icon-menu"></use>
                                 </svg>
                             </span>
                         </div>
@@ -43,7 +43,7 @@
                             <h1 class="nav__category">KA<span>RT</span></h1>
                             <div class="close__toggle">
                                 <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-cross"></use>
+                                    <use xlink:href="{% static 'mainapp/images/sprite.svg' %}#icon-cross"></use>
                                 </svg>
                             </div>
                         </div>
@@ -72,19 +72,19 @@
                         <ul class="nav__icons">
                             <a href="#" class="icon__item">
                                 <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-search"></use>
+                                    <use xlink:href="{% static 'mainapp/images/sprite.svg' %}#icon-search"></use>
                                 </svg>
                             </a>
 
                             <a href="#" class="icon__item">
                                 <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-user"></use>
+                                    <use xlink:href="{% static 'mainapp/images/sprite.svg' %}#icon-user"></use>
                                 </svg>
                             </a>
 
-                            <a href="addToCart.html" class="icon__item">
+                            <a href="{% url 'carts:cart' %}" class="icon__item">
                                 <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-shopping-basket"></use>
+                                    <use xlink:href="{% static 'mainapp/images/sprite.svg' %}#icon-shopping-basket"></use>
                                 </svg>
                                 <span>2</span>
                             </a>
@@ -114,7 +114,7 @@
         </div>
 
         <div class="footer-log">
-            <a href="{% url 'setapp:index' %}"><i class="uil uil-angle-left"></i> Go back to Home</a>
+            <a href="{% url 'mainapp:index' %}"><i class="uil uil-angle-left"></i> Go back to Home</a>
         </div>
     </header>
 </body>
