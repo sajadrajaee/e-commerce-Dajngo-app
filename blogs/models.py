@@ -8,7 +8,8 @@ class BlogPost(models.Model):
     cover_page_pic = models.ImageField(upload_to='static/blogs/images')
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=180)
-    created_at = models.TextField()
+    created_at = models.DateField(auto_now_add=True)
+    content = models.TextField()
     image = models.ImageField(
         upload_to='static/blogs/images',
         null=True,
