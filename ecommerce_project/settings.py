@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'useraccounts',
     'products',
     'carts',
-    'blogs'
+    'blogs',
+    'useraccounts'
 ]
 AUTH_USER_MODEL = 'useraccounts.CustomUser'
 
@@ -106,8 +106,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'useraccounts.backends.EmailOrPhoneBackend',
-    'django.contrib.auth.backends.ModelBackend',
+    #this is used for as default to let users login ther username
+    "django.contrib.auth.backends.ModelBackend",
+    "useraccounts.authentication.EmailAuthBackend" 
 ]
 
 # Internationalization

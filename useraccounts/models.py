@@ -1,69 +1,60 @@
 from django.db import models
-from django.utils import timezone
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.validators import UnicodeUsernameValidator
-from django.contrib.auth.models import (
-    AbstractBaseUser, PermissionsMixin
-)
-from .managers import CustomUserManager
 
-
+# ----------- manager ---------
+class CustomManager(BaseUserManager):
+    def create_user(self, username, password=None):
+        if not username:
+            raise ValueError("email or phone number must be set")
+        
+        email = self.normalize_email(username)
+        user = None
+        try:
+            email = CustomUser.objects.get(email=username)
+        except CustomUser.DoesNotExist:
+            try:
+                phone = CustomUser.objects.get(phone_number = username)
+            except CustomUser.DoesNotExist:
+                pass
+        
+        if user is None:
+            user = self.model(
+                email=email,
+                phone_number = username if not email else None
+            )
+            user.set_password(password)
+            user.save()
+            return user
+        
+    def create_superuser(self, username, password=None):
+        user = self.create_user(username=username, password=password)
+        user.is_staff = True
+        user.is_superuser = True
+        user.save()
+        return user
+    
+# ----------------- model class -----------------
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    username_validator = UnicodeUsernameValidator()
-
-    username = models.CharField(
-        _("username"),
-        max_length=150,
-        unique=True,
-        help_text=_(
-            "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
-        ),
-        validators=[username_validator],
-        error_messages={
-            "unique": _("A user with that username already exists."),
-        },
+    class Meta:
+        verbose_name = " کاربر"
+        verbose_name_plural = "کاربران"
+        
+    first_name = models.CharField(max_length=150)
+    last_name = models.CharField(max_length=180)
+    username = models.CharField(max_length=150)    
+    phone_number = models.IntegerField(
+        null=True, blank=True, verbose_name="شماره تماس", unique=True
     )
-    first_name = models.CharField(_("first name"), max_length=150, blank=True)
-    last_name = models.CharField(_("last name"), max_length=150, blank=True)
-    email = models.EmailField(_("email address"), blank=True)
-    phone_number = models.IntegerField(null=True, blank=True)
+    email = models.EmailField(_("email address"), blank=True, unique=True)
     
-    is_staff = models.BooleanField(
-        _("staff status"),
-        default=False,
-        help_text=_("Designates whether the user can log into this admin site."),
-    )
-    is_active = models.BooleanField(
-        _("active"),
-        default=True,
-        help_text=_(
-            "Designates whether this user should be treated as active. "
-            "Unselect this instead of deleting accounts."
-        ),
-    )
-    date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
-
-    objects = CustomUserManager()
-
-    EMAIL_FIELD = "email"
-    USERNAME_FIELD = "username"
-    REQUIRED_FIELDS = ["email"]
+    date_joined = models.DateTimeField(auto_now_add=True)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
     
+    USERNAME_FIELD = "phone_number"
+    
+    objects = CustomManager()
     def __str__(self):
-        return self.first_name
-    
-    
-# class EmailOrPhoneBackend(ModelBackend):
-#     def authenticate(self, request, username=None, password = None, **kwargs):
-#         UserModel = CustomUser()
-#         try:
-#             user = UserModel.objects.get(email = username)
-#         except UserModel.DoesNotExist:
-#             try:
-#                 user = UserModel.objects.get(phone_number=username)
-#             except UserModel.DoesNotExist:
-#                 return None
-#         else:
-#             if user.check_password(password):
-#                 return user
-            
+        return self.username

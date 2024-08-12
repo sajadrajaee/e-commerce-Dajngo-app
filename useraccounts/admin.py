@@ -1,45 +1,45 @@
 from django.contrib import admin
 from .models import CustomUser
 from .forms import CustomUserCreationForm, CustomUserChangeForm
+from django import forms
+from django.contrib.auth.admin import UserAdmin
 
-class CustomUserAdmin(admin.ModelAdmin):
+
+@admin.register(CustomUser)
+class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    #used to display items in userchange form of django admin panel
-    fieldsets =  (
-        ("user info", {"fields" : ("username", "first_name", "last_name", "email", "password" )}),
+    fieldsets = ( #this items are going to apear in user change form
         (
-            "permision", {"fields": ("is_active", "is_staff", "groups", "user_permissions")}
-        )        
+            "user information", {
+                "fields":("username", "first_name", "last_name", "email", "phone_number", "password")
+            }
+        ),
+        (
+            "permissions", {
+                "fields": ("is_active", "is_staff", "groups", "user_permissions")
+            }
+        )
     )
-    #used to display items in user creation form of django admin panel
-    add_fieldsets = (
-        (None, {
-            "classes": ("wide",),
-            "fields": (
-                "date_joined",
-                "username",
-                "first_name",
-                "last_name",
-                "email",
-                "password1",
-                "password2",
-                "groups",
-                "user_permissions"
+    
+    add_fieldsets = ( #this items are going to appear in user create form on admin panel
+        (
+            None, {
+                "classes":("wide",),
+                "fields" : (
+                    "username",
+                    "first_name",
+                    "last_name",
+                    "email",
+                    "phone_number",
+                    "password1",
+                    "password2",
+                    "is_staff",
+                    "is_active",
+                    "groups",
+                    "user_permissions",
                 )
             }
         ),
-    )  
-
-    ordering = ('date_joined',)
-    list_display = [
-        'username',
-        'email',
-        'is_active',
-        'is_staff',
-    ]
-    list_filter = ['date_joined',]
-    search_fields  = ["email", "username"]
-
-admin.site.register(CustomUser, CustomUserAdmin)
+    )
