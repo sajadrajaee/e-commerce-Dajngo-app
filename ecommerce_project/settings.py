@@ -41,9 +41,9 @@ INSTALLED_APPS = [
     'products',
     'carts',
     'blogs',
-    'useraccounts'
+    'accounts'
 ]
-AUTH_USER_MODEL = 'useraccounts.CustomUser'
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -105,18 +105,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = [
-    #this is used for as default to let users login ther username
-    "django.contrib.auth.backends.ModelBackend",
-    "useraccounts.authentication.EmailAuthBackend" 
-]
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fa-ir'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True
 

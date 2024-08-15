@@ -65,19 +65,23 @@
               <li class="nav__item">
                 <a href="#newsletter" class="nav__link scroll-link">سابسکرایب</a>
               </li>
-
-              <li class="nav__item">
-                <a href="{% url 'useraccounts:login' %}" class="nav__link">Login/Register</a>
-              </li>
             </ul>
-
+            
+             <!-- search section  -->
+            <form action="{% url 'products:search' %}" method="get">
+              <input type="text" name="query" placeholder="Search...">
+              <button type="submit">
+                  <i class="fas fa-search">search</i>
+              </button>
+            </form>            
+            <!-- ---------------  -->
             <ul class="nav__icons">
-              <a href="#" class="icon__item">
+              <!-- <a href="{% url 'products:search' %}" class="icon__item">
                 <svg>
                   <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-search"></use>
                 </svg>
-              </a>
-              <a href="#" class="icon__item">
+              </a> -->
+              <a href="{% url 'accounts:profile' %}" class="icon__item">
                 <svg>
                   <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-user"></use>
                 </svg>

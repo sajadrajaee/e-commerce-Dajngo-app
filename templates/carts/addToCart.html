@@ -52,23 +52,19 @@
                         </div>
                         <ul class="nav__list">
                             <li class="nav__item">
-                                <a href="#header" class="nav__link scroll-link">Home</a>
+                                <a href="{% url 'products:index' %}#header" class="nav__link scroll-link">صفحه اصلی</a>
                             </li>
 
                             <li class="nav__item">
-                                <a href="#featured" class="nav__link scroll-link">Featured</a>
+                                <a href="{% url 'products:index' %}#featured" class="nav__link scroll-link">اجناس ویژه</a>
                             </li>
 
                             <li class="nav__item">
-                                <a href="#blog" class="nav__link scroll-link">Blog</a>
+                                <a href="{% url 'blogs:blogs' %}" class="nav__link scroll-link">وبلاگ</a>
                             </li>
 
                             <li class="nav__item">
-                                <a href="#newsletter" class="nav__link scroll-link">Subscribe</a>
-                            </li>
-
-                            <li class="nav__item">
-                                <a href="{% url 'useraccounts:login' %}" class="nav__link">Login/Register</a>
+                                <a href="{% url 'products:index' %}#newsletter" class="nav__link scroll-link">سابسکرایب</a>
                             </li>
                         </ul>
 
@@ -79,13 +75,13 @@
                                 </svg>
                             </a>
 
-                            <a href="#" class="icon__item">
+                            <a href="{% url 'accounts:profile' %}" class="icon__item">
                                 <svg>
                                     <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-user"></use>
                                 </svg>
                             </a>
 
-                            <a href="#" class="icon__item">
+                            <a href="{% url 'products:index' %}" class="icon__item">
                                 <svg>
                                     <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-shopping-basket"></use>
                                 </svg>
@@ -104,25 +100,18 @@
         <section id="cart">
             <div id="cart-container">
                 <div id="pincode">
-                    <p>Check delivery time & services</p>
-                    <button>ENTER PIN CODE</button>
+                    <p>دیدن زمان رسیدن جنس</p>
+                    <button>کد پین را وارد کنید</button>
                 </div>
-
-                <div id="offers">
-                    <p>Available offers</p>
-                    <ul>- 10% Instant Discount on Rupay Credit cards on a Minimum spend of Rs 2,000. TCA </ul>
-                    <button>Show More <i class="uil uil-angle-down"></i></button>
-                </div>
-
                 <div class="select-item">
                     <div class="select-item-left">
                         <input type="checkbox" name="" id="">
                         <p>1/1 Items Selected</p>
                     </div>
                     <div class="select-item-right">
-                        <button>Remove</button>
+                        <button>برداشتن</button>
                         <span>|</span>
-                        <button>Move to Wishlist</button>
+                        <button>انتقال به لیست مورد علاقه</button>
                     </div>
 
                 </div>
@@ -132,7 +121,7 @@
                         <img src="{% static 'products/images/pic5.png' %}" alt="">
                     </div>
                     <div class="product-item-details">
-                        <h3>Jacket</h3>
+                        <h3>Jacket{nameOfProduct}</h3>
                         <span>Sold by: Nike Limited</span>
                         <form action="" method="get">
                             <label for="browser">Size :</label>
