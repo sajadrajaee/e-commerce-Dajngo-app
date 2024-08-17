@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'accounts'
 ]
 AUTH_USER_MODEL = 'accounts.CustomUser'
+CART_SESSION_ID = 'carts'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
