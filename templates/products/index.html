@@ -148,23 +148,27 @@
       </div>
     </section> 
 
-    <!-- Cart Slide -->
+    <!-- -------------- Models of Day ---------------- -->
+    <div class="title">
+      <h1 class="primary__title">مدل روز</h1>
+    </div>
     <section class="cart__slide">
       <div class="arrival__slide container">
         <div class="glide" id="glide1">
           <div class="glide__track" data-glide-el="track">
+            {% if models_of_day %}
+            {% for product in models_of_day %}
             <ul class="glide__slides">
               <li class="glide__slide">
                 <div class="arrival">
                   <div class="cart__like">
                     <div class="image__holder">
-                      <img src="{% static 'products/images/pic7.png' %}" alt="" />
+                      <img src="{{ product.image.url }}" alt="" />
                     </div>
                     <div class="cart__details">
-                      <h1>Nike Men Reversible Jacket</h1>
+                      <h1>{{ product.name }}</h1>
                       <p>
-                        Orange solid reversible bomber jacket with embroidered detail, has a stand collar, 2 pockets, a
-                        zip closure, long sleeves, straight hemline, polyester lining
+                        {{ product.description }}
                       </p>
                       <div class="rating">
                         <span>
@@ -201,177 +205,17 @@
                       </div>
                       <div class="btn__group">
                         <button>Add To <i class="uil uil-shopping-cart-alt"></i></button>
-                        <button>Rs. 699</button>
+                        <button>{{ product.price }}تومان</button>
                       </div>
                     </div>
                   </div>
                 </div>
               </li>
-              <li class="glide__slide">
-                <div class="arrival">
-                  <div class="cart__like">
-                    <div class="image__holder">
-                      <img src="{% static 'products/images/pic8.png' %}" alt="" />
-                    </div>
-                    <div class="cart__details">
-                      <h1>Polar Skate Co Devil T Shirt</h1>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Doloremque eius, laborum sunt dolorem
-                        necessitatibus incidunt aut ducimus, quis, veritatis
-                        cum dolore tempora? Corporis, nostrum alias.
-                      </p>
-                      <div class="rating">
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-full"></use>
-                          </svg>
-                        </span>
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-full"></use>
-                          </svg>
-                        </span>
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-full"></use>
-                          </svg>
-                        </span>
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-full"></use>
-                          </svg>
-                        </span>
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-empty"></use>
-                          </svg>
-                        </span>
-                      </div>                      <div class="colors">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
-                      <div class="btn__group">
-                        <button>Add To Cart</button>
-                        <button>$75</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="glide__slide">
-                <div class="arrival">
-                  <div class="cart__like">
-                    <div class="image__holder">
-                      <img src="{% static 'products/images/pic9.png' %}" alt="" />
-                    </div>
-                    <div class="cart__details">
-                      <h1>Polar Skate Co Devil T Shirt</h1>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Doloremque eius, laborum sunt dolorem
-                        necessitatibus incidunt aut ducimus, quis, veritatis
-                        cum dolore tempora? Corporis, nostrum alias.
-                      </p>
-                      <div class="rating">
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-full"></use>
-                          </svg>
-                        </span>
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-full"></use>
-                          </svg>
-                        </span>
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-full"></use>
-                          </svg>
-                        </span>
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-full"></use>
-                          </svg>
-                        </span>
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-empty"></use>
-                          </svg>
-                        </span>
-                      </div>                      <div class="colors">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
-                      <div class="btn__group">
-                        <button>Add To Cart</button>
-                        <button>$75</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="glide__slide">
-                <div class="arrival">
-                  <div class="cart__like">
-                    <div class="image__holder">
-                      <img src="{% static 'products/images/pic3.png' %}" alt="" />
-                    </div>
-                    <div class="cart__details">
-                      <h1>Polar Skate Co Devil T Shirt</h1>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Doloremque eius, laborum sunt dolorem
-                        necessitatibus incidunt aut ducimus, quis, veritatis
-                        cum dolore tempora? Corporis, nostrum alias.
-                      </p>
-                      <div class="rating">
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-full"></use>
-                          </svg>
-                        </span>
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-full"></use>
-                          </svg>
-                        </span>
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-full"></use>
-                          </svg>
-                        </span>
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-full"></use>
-                          </svg>
-                        </span>
-                        <span>
-                          <svg>
-                            <use xlink:href="{% static 'products/images/sprite.svg' %}#icon-star-empty"></use>
-                          </svg>
-                        </span>
-                      </div>                      <div class="colors">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
-                      <div class="btn__group">
-                        <button>Add To Cart</button>
-                        <button>$75</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-
+              </ul>
+            {% endfor %}
+            {% else %}
+              <p>هیچ مدلی ایجاد نشده است</p>
+            {% endif %}
           <!-- Arrows -->
           <!-- <div class="glide__arrows" data-glide-el="controls">
             <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
@@ -487,11 +331,11 @@
         <div class="blog__center">
           <div class="blog__box">
             <div class="img__cover">
-              <img src="{{ post.cover_page_pic.url }}" alt="" />
+              <img src="{{ post.image.url }}" alt=""/>
             </div>
             <div class="box__content">
               <h2>{{ post.title }}</h2>
-              <a href="#">Read more</a>
+              <a href="#">بیشتر بدانید</a>
             </div>
           </div>
         </div>
